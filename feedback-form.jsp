@@ -9,8 +9,8 @@
                 <div class="invalid-feedback">Please enter your full name.</div>
             </div>
             <div class="mb-3 position-relative">
-                <input type="text" class="form-control premium-input" id="feedbackMobile" name="mobile" placeholder="Mobile Number" required>
-                <div class="invalid-feedback">Enter a valid 10-12 digit mobile number.</div>
+                <input type="tel" class="form-control premium-input" id="feedbackMobile" name="mobile" placeholder="Mobile Number" pattern="[0-9]{10,12}" required>
+                <div class="invalid-feedback">Enter a valid 10 digit mobile number.</div>
             </div>
             <div class="mb-3 position-relative">
                 <input type="email" class="form-control premium-input" id="feedbackEmail" name="email" placeholder="Email Address" required>
