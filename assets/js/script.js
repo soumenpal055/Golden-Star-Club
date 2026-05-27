@@ -150,7 +150,43 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             e.stopPropagation();
             
-            if (!feedbackForm.checkValidity()) {
+            const nameInput = document.getElementById('feedbackName');
+            const mobileInput = document.getElementById('feedbackMobile');
+            const emailInput = document.getElementById('feedbackEmail');
+            const messageInput = document.getElementById('feedbackMessage');
+            
+            let isValid = true;
+            
+            if (!nameInput.value.trim()) {
+                nameInput.setCustomValidity('Invalid');
+                isValid = false;
+            } else {
+                nameInput.setCustomValidity('');
+            }
+            
+            if (!/^[0-9]{10,12}$/.test(mobileInput.value.trim())) {
+                mobileInput.setCustomValidity('Invalid');
+                isValid = false;
+            } else {
+                mobileInput.setCustomValidity('');
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                emailInput.setCustomValidity('Invalid');
+                isValid = false;
+            } else {
+                emailInput.setCustomValidity('');
+            }
+            
+            if (!messageInput.value.trim()) {
+                messageInput.setCustomValidity('Invalid');
+                isValid = false;
+            } else {
+                messageInput.setCustomValidity('');
+            }
+            
+            if (!isValid || !feedbackForm.checkValidity()) {
                 feedbackForm.classList.add('was-validated');
                 return;
             }
